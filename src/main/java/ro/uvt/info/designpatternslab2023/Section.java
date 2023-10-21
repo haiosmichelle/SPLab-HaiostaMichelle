@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Section implements Element {
     public String title;
-    public List<Element> el = new ArrayList<Element>();
+    public List<Element> el = new ArrayList<>();
 
     public Section(String title) {
         this.title = title;

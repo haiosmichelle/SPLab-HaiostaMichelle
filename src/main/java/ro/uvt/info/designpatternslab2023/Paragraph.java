@@ -14,10 +14,6 @@ public class Paragraph implements Element {
                 '}';
     }
 
-    public Paragraph() {
-        this.text = "";
-    }
-
     public void print() {
         System.out.println("Paragraph: " + text);
     }

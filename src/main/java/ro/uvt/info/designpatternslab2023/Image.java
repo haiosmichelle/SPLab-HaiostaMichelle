@@ -14,9 +14,6 @@ public class Image implements Element {
                 '}';
     }
 
-    public Image() {
-        this.ImageName = "";
-    }
 
     public void print() {
         System.out.println("Image with name : " + ImageName);

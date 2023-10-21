@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Element {
-    public void print();
+     void print();
 
-    public void add(Element a);
+     void add(Element a);
 
-    public Element get(int nr);
+     Element get(int nr);
 
-    public void remove(Element a);
+    void remove(Element a);
 
 }
