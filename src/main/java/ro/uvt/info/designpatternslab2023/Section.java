@@ -1,30 +1,27 @@
 package ro.uvt.info.designpatternslab2023;
 
-public class Table implements Element {
-    public String title;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Table(String title) {
+public class Section implements Element {
+    public String title;
+    public List<Element> el = new ArrayList<Element>();
+
+    public Section(String title) {
         this.title = title;
     }
 
     @Override
-    public String toString() {
-        return "Table{" +
-                "title='" + title + '\'' +
-                '}';
-    }
-
-    public Table() {
-        this.title = "";
-    }
-
     public void print() {
-        System.out.println("Table with name : " + title);
+        System.out.println(title);
+        for (Element e : el) {
+            e.print();
+        }
     }
 
     @Override
     public void add(Element a) {
-
+        el.add(a);
     }
 
     @Override
