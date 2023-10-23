@@ -7,13 +7,6 @@ public class Paragraph implements Element {
         this.text = text;
     }
 
-    @Override
-    public String toString() {
-        return "Paragraph{" +
-                "text='" + text + '\'' +
-                '}';
-    }
-
     public void print() {
         System.out.println("Paragraph: " + text);
     }

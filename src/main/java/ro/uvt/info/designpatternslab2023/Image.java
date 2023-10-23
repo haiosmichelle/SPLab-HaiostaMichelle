@@ -7,14 +7,6 @@ public class Image implements Element {
         this.ImageName = ImageName;
     }
 
-    @Override
-    public String toString() {
-        return "Image{" +
-                "ImageName='" + ImageName + '\'' +
-                '}';
-    }
-
-
     public void print() {
         System.out.println("Image with name : " + ImageName);
     }

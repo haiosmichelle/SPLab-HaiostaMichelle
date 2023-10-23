@@ -3,7 +3,6 @@ package ro.uvt.info.designpatternslab2023;
 public class TableOfContents implements Element{
     @Override
     public void print() {
-
     }
 
     @Override

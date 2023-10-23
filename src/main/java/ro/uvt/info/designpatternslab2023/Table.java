@@ -7,13 +7,6 @@ public class Table implements Element {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "Table{" +
-                "title='" + title + '\'' +
-                '}';
-    }
-
     public Table() {
         this.title = "";
     }
