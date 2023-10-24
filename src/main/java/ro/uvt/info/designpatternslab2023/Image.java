@@ -1,14 +1,21 @@
 package ro.uvt.info.designpatternslab2023;
 
-public class Image implements Element {
-    public String ImageName;
+import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
-    public Image(String ImageName) {
-        this.ImageName = ImageName;
+public class Image implements Element,Picture {
+    public String ImageName;
+    public Image(String name) {
+        ImageName = name;
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void print() {
-        System.out.println("Image with name : " + ImageName);
+        System.out.println("Image with name : " +this.ImageName);
     }
 
     @Override
@@ -24,5 +31,15 @@ public class Image implements Element {
     @Override
     public void remove(Element a) {
 
+    }
+
+    @Override
+    public String url() {
+        return null;
+    }
+
+    @Override
+    public Dimension dim() {
+        return null;
     }
 }
