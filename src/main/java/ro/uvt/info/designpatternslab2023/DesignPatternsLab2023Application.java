@@ -26,6 +26,7 @@ public class DesignPatternsLab2023Application {
 //        cap111.add(cap1111);
 //        cap1111.add(new Image("Image subchapter 1.1.1.1"));
 //        noapteBuna.print();
+
         long startTime = System.currentTimeMillis();
         ImageProxy img1 = new ImageProxy("Pamela Anderson");
         ImageProxy img2 = new ImageProxy("Kim Kardashian");

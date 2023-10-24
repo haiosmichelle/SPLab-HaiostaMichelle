@@ -13,7 +13,6 @@ public class Image implements Element,Picture {
             e.printStackTrace();
         }
     }
-
     public void print() {
         System.out.println("Image with name : " +this.ImageName);
     }
