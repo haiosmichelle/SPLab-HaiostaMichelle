@@ -1,25 +1,28 @@
 package ro.uvt.info.designpatternslab2023;
 
-public class Paragraph {
+public class Paragraph implements Element {
     public String text;
-    public Paragraph(String text)
-    {
-        this.text=text;
+
+    public Paragraph(String text) {
+        this.text = text;
+    }
+
+    public void print() {
+        System.out.println("Paragraph: " + text);
     }
 
     @Override
-    public String toString() {
-        return "Paragraph{" +
-                "text='" + text + '\'' +
-                '}';
+    public void add(Element a) {
+
     }
 
-    public Paragraph()
-    {
-        this.text="";
+    @Override
+    public Element get(int nr) {
+        return null;
     }
-    public void print()
-    {
-        System.out.println(text);
+
+    @Override
+    public void remove(Element a) {
+
     }
 }

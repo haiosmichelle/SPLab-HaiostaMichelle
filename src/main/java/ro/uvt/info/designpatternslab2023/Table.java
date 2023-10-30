@@ -1,25 +1,32 @@
 package ro.uvt.info.designpatternslab2023;
 
-public class Table {
+public class Table implements Element {
     public String title;
-    public Table(String title)
-    {
-        this.title=title;
+
+    public Table(String title) {
+        this.title = title;
+    }
+
+    public Table() {
+        this.title = "";
+    }
+
+    public void print() {
+        System.out.println("Table with name : " + title);
     }
 
     @Override
-    public String toString() {
-        return "Table{" +
-                "title='" + title + '\'' +
-                '}';
+    public void add(Element a) {
+
     }
 
-    public Table()
-    {
-        this.title="";
+    @Override
+    public Element get(int nr) {
+        return null;
     }
-    public void print()
-    {
-        System.out.println(title);
+
+    @Override
+    public void remove(Element a) {
+
     }
 }
