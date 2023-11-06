@@ -30,8 +30,7 @@ public class ImageProxy implements Picture,Element{
 
     @Override
     public void print() {
-        loadImage();
-        realImage.print();
+        loadImage().print();
     }
 
     @Override
