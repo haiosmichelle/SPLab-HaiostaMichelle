@@ -1,4 +1,4 @@
-package ro.uvt.info.designpatternslab2023;
+package ro.uvt.info.designpatternslab2023.books;
 
 public class Context {
     private int number_row;

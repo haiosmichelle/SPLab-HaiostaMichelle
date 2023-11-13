@@ -1,4 +1,4 @@
-package ro.uvt.info.designpatternslab2023;
+package ro.uvt.info.designpatternslab2023.books;
 
 import java.awt.*;
 
