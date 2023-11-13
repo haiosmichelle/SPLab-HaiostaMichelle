@@ -1,7 +1,4 @@
-package ro.uvt.info.designpatternslab2023;
-
-import java.util.ArrayList;
-import java.util.List;
+package ro.uvt.info.designpatternslab2023.books;
 
 public interface Element {
 

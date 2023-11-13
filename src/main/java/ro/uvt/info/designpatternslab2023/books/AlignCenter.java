@@ -1,11 +1,9 @@
-package ro.uvt.info.designpatternslab2023;
-
-import javax.naming.Context;
+package ro.uvt.info.designpatternslab2023.books;
 
 public class AlignCenter implements AlignStrategy{
 
     @Override
-    public void render(String p, ro.uvt.info.designpatternslab2023.Context c) {
+    public void render(String p, Context c) {
         System.out.println("Aligning paragraph to the center:");
         for (int i = 0; i < c.getNumber_row(); i++) {
             int padding = (c.getNumber_coll() - p.length()) / 2;

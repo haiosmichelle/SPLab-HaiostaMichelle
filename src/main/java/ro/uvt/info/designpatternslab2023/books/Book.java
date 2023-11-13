@@ -1,10 +1,9 @@
-package ro.uvt.info.designpatternslab2023;
+package ro.uvt.info.designpatternslab2023.books;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-public class Book extends Section{
+public class Book extends Section {
     public String title;
     public List<Author> au = new ArrayList<Author>();
     public TableOfContents tb;

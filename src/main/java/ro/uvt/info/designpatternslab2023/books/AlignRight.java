@@ -1,10 +1,8 @@
-package ro.uvt.info.designpatternslab2023;
-
-import javax.naming.Context;
+package ro.uvt.info.designpatternslab2023.books;
 
 public class AlignRight implements AlignStrategy{
     @Override
-    public void render(String p, ro.uvt.info.designpatternslab2023.Context c) {
+    public void render(String p, Context c) {
         System.out.println("Aligning paragraph to the right:");
         for (int i = 0; i < c.getNumber_row(); i++) {
             for (int j = 0; j < c.getNumber_coll() - p.length(); j++) {
