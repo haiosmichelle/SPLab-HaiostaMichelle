@@ -1,6 +1,8 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.models;
 
-public class Paragraph implements Element {
+import ro.uvt.info.designpatternslab2023.services.AlignStrategy;
+
+public class Paragraph implements Element, Visitee {
     public String text;
     public AlignStrategy textAlignment;
 
@@ -34,5 +36,10 @@ public class Paragraph implements Element {
     @Override
     public void remove(Element a) {
 
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitParagraph(this);
     }
 }

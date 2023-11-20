@@ -1,6 +1,6 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.models;
 
-public class Table implements Element {
+public class Table implements Element, Visitee {
     public String title;
 
     public Table(String title) {
@@ -28,5 +28,10 @@ public class Table implements Element {
     @Override
     public void remove(Element a) {
 
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitTable(this);
     }
 }

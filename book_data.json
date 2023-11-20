@@ -1,0 +1,1 @@
+[{"type":"Book","data":"The book"},{"type":"Paragraph","data":"Paragraph 1"},{"type":"ImageProxy","data":"ImageOne"},{"type":"Section","title":"Chapter 1","elements":[{"type":"Paragraph","data":"Paragraph 1"},{"type":"ImageProxy","data":"ImageOne"}]}]
