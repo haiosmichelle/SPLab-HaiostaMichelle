@@ -1,9 +1,9 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.models;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-public class Image implements Element,Picture {
+public class Image implements Element,Picture, Visitee {
     public String ImageName;
     public Image(String name) {
         ImageName = name;
@@ -40,5 +40,10 @@ public class Image implements Element,Picture {
     @Override
     public Dimension dim() {
         return null;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImage(this);
     }
 }

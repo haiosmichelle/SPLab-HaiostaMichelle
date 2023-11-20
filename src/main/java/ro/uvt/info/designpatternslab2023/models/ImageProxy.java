@@ -1,8 +1,8 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.models;
 
 import java.awt.*;
 
-public class ImageProxy implements Picture,Element{
+public class ImageProxy implements Picture,Element, Visitee{
     public String url;
     public Dimension dim;
     Image realImage = null;
@@ -46,5 +46,10 @@ public class ImageProxy implements Picture,Element{
     @Override
     public void remove(Element a) {
 
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitImageProxy(this);
     }
 }

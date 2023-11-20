@@ -1,11 +1,12 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book extends Section {
+public class Book extends Section implements Visitee {
     public String title;
     public List<Author> au = new ArrayList<Author>();
+    public List<Visitee> content = new ArrayList<>();
     public TableOfContents tb;
 
     public Book(String title) {
@@ -33,6 +34,17 @@ public class Book extends Section {
 
     public void addContent(Element a) {
         el.add(a);
+        content.add((Visitee) a);
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visitBook(this);
+        for(Visitee element : content)
+        {
+            element.accept(visitor);
+        }
+        //visitor.saveToJson("book_data.json");
     }
 //    public int createChapter(String nume)
 //    { Chapter a = new Chapter();

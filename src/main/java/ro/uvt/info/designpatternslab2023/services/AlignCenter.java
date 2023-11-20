@@ -1,4 +1,6 @@
-package ro.uvt.info.designpatternslab2023.books;
+package ro.uvt.info.designpatternslab2023.services;
+
+import ro.uvt.info.designpatternslab2023.models.Context;
 
 public class AlignCenter implements AlignStrategy{
 
