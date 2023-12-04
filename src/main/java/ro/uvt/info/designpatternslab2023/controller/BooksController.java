@@ -2,13 +2,13 @@ package ro.uvt.info.designpatternslab2023.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.designpatternslab2023.models.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/books")
+//@RequestMapping("/books")
 public class BooksController {
     @GetMapping("/statistics")
     public ResponseEntity<?> printStatistics() {
@@ -30,4 +30,37 @@ public class BooksController {
         stats.printStatistics();
         return new ResponseEntity<>("", HttpStatus.OK);
     }
+    @GetMapping("/books")
+    public List<Book> getBooks()
+    {
+
+        return List.of(new Book("Ion"));
+    }
+
+    @GetMapping("/books/{id}")
+    public Book getBookById(@PathVariable int id) {
+        System.out.println("Get id: " + id);
+        return new Book("Cuore singur pe lume");
+    }
+
+    @PostMapping("/books")
+    public Book createBook(@RequestBody Book book)
+    {
+
+        return new Book(book.title);
+    }
+
+    @PutMapping("/books/{id}")
+    public Book updateBook(@RequestBody Book book, @PathVariable int id) {
+        System.out.println("Update id: " + id);
+        return new Book(book.title);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public HttpStatus deleteBook(@PathVariable int id) {
+        System.out.println("Delete id: " + id);
+        return HttpStatus.OK;
+
+    }
+
 }
