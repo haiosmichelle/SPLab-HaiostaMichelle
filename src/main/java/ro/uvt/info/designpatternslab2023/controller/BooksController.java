@@ -30,37 +30,5 @@ public class BooksController {
         stats.printStatistics();
         return new ResponseEntity<>("", HttpStatus.OK);
     }
-    @GetMapping("/books")
-    public List<Book> getBooks()
-    {
-
-        return List.of(new Book("Ion"));
-    }
-
-    @GetMapping("/books/{id}")
-    public Book getBookById(@PathVariable int id) {
-        System.out.println("Get id: " + id);
-        return new Book("Cuore singur pe lume");
-    }
-
-    @PostMapping("/books")
-    public Book createBook(@RequestBody Book book)
-    {
-
-        return new Book(book.title);
-    }
-
-    @PutMapping("/books/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable int id) {
-        System.out.println("Update id: " + id);
-        return new Book(book.title);
-    }
-
-    @DeleteMapping("/books/{id}")
-    public HttpStatus deleteBook(@PathVariable int id) {
-        System.out.println("Delete id: " + id);
-        return HttpStatus.OK;
-
-    }
 
 }
