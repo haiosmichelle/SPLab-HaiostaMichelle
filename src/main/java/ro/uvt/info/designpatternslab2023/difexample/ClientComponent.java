@@ -26,4 +26,5 @@ public class ClientComponent {
         System.out.println(" o SingletonComponent = " + sc);
         System.out.println(" o TransientComponent = " + tc);
     }
+
 }

@@ -60,6 +60,7 @@ public class BooksController {
     public HttpStatus deleteBook(@PathVariable int id) {
         System.out.println("Delete id: " + id);
         return HttpStatus.OK;
+
     }
 
 }

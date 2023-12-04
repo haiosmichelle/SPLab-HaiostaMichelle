@@ -29,6 +29,7 @@ public class TransFilter implements Filter {
             chain.doFilter(request, response);
         } finally {
             log.info("Committing a transaction for request: " + req.getRequestURI());
+
         }
     }
 
