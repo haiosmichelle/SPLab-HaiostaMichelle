@@ -7,11 +7,13 @@ import ro.uvt.info.designpatternslab2023.controller.BooksController;
 public class ClientComponent {
     private final TransientComponent tc;
     private final SingletonComponent sc;
+    private final BooksController bc;
     @Autowired
     public ClientComponent(TransientComponent tc, SingletonComponent
-            sc) {
+            sc, BooksController bc) {
         this.tc = tc;
         this.sc = sc;
+        this.bc = bc;
         System.out.println("ClientComponent::ClientComponent = " +
 
                 this);

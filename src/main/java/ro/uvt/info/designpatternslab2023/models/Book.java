@@ -10,6 +10,7 @@ public class Book extends Section implements Visitee {
     public List<Author> au = new ArrayList<Author>();
     public List<Visitee> content = new ArrayList<>();
     public TableOfContents tb;
+    @JsonCreator
 
     public Book(String title) {
         super(title);
