@@ -1,31 +1,37 @@
 package ro.uvt.info.designpatternslab2023.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ro.uvt.info.designpatternslab2023.models.Book;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-@Component
+@Service
 public class BookService {
-    private List<Book> books = new ArrayList<>();
+    private Map<Long, Book> books = new HashMap<>();
+    private long Id = 1;
     public Book save(Book book)
-    {
-        books.add(book);
-        return book;
+    { long bookId = getNextId();
+        books.put(bookId,book);
+        return books.get(bookId);
     }
-    public Book delete(Book book)
-    {
-     books.remove(book);
-     return book;
+    private synchronized long getNextId() {
+        return Id++;
     }
-    public Book update(Book updatedBook) {
-        int index = books.indexOf(updatedBook);
-        if (index != -1) {
-            books.set(index, updatedBook);
-            return updatedBook;
-        } else {
-            return null;
-        }
+    public void delete(Long bookId)
+    {
+     books.remove(bookId);
+    }
+    public List<Book> getAllBooks() {
+        return new ArrayList<>(books.values());
+    }
+    public void update(Long bookId,Book updatedBook) {
+        if (books.containsKey(bookId)) {
+            books.put(bookId, updatedBook);
+        }}
+    public Book getBookById(Long bookId) {
+        return books.get(bookId);
     }
 }

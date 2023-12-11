@@ -1,23 +1,25 @@
 package ro.uvt.info.designpatternslab2023.services;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ro.uvt.info.designpatternslab2023.models.Book;
-
-public class DeleteBooks implements Command<Book> {
+@Component
+public class DeleteBooks implements Command<Void> {
     private Book book;
-    private BookService bookService;
+    private final BookService bookService;
+    Long Id;
 
-    public DeleteBooks() {
-    }
-
-    public DeleteBooks(Book book, BookService bookService) {
-        this.book = book;
+    public DeleteBooks(BookService bookService) {
         this.bookService = bookService;
     }
 
+
     @Override
-    public Book execute() {
-        // Assuming BookService has a delete method
-        return this.bookService.delete(book);
+    public Void execute() {
+       bookService.delete(Id);
+       return null;
+    }
+    public void setAtribute(Long id){
+        this.Id = id;
     }
 }

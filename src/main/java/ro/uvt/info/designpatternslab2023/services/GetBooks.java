@@ -4,11 +4,16 @@ import org.springframework.stereotype.Component;
 import ro.uvt.info.designpatternslab2023.models.Book;
 
 import java.util.List;
-
+@Component
 public class GetBooks implements Command<List<Book>>{
+  private final BookService bookService;
+
+    public GetBooks(BookService bookService, BookService bookService1) {
+      this.bookService = bookService1;
+    }
 
     @Override
     public List<Book> execute() {
-        return List.of(new Book("Aladin"));
+        return bookService.getAllBooks();
     }
 }
