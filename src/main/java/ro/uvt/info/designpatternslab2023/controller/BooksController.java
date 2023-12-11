@@ -4,12 +4,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.designpatternslab2023.models.*;
+import ro.uvt.info.designpatternslab2023.services.BookService;
+import ro.uvt.info.designpatternslab2023.services.GetBooks;
+import ro.uvt.info.designpatternslab2023.services.PostBooks;
 
 import java.util.List;
 
 @RestController
 //@RequestMapping("/books")
 public class BooksController {
+    private BookService bookService;
+   public BooksController(){}
+    public BooksController(BookService bookService) {
+        this.bookService = bookService;
+    }
+
     @GetMapping("/statistics")
     public ResponseEntity<?> printStatistics() {
         Section cap1 = new Section("Capitolul 1");
@@ -34,7 +43,7 @@ public class BooksController {
     public List<Book> getBooks()
     {
 
-        return List.of(new Book("Ion"));
+        return new GetBooks().execute();
     }
 
     @GetMapping("/books/{id}")
@@ -47,7 +56,7 @@ public class BooksController {
     public Book createBook(@RequestBody Book book)
     {
 
-        return new Book(book.title);
+        return new PostBooks(book, this.bookService).execute();
     }
 
     @PutMapping("/books/{id}")
