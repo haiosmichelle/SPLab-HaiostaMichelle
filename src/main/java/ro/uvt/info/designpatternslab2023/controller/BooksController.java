@@ -4,20 +4,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.designpatternslab2023.models.*;
-import ro.uvt.info.designpatternslab2023.services.BookService;
-import ro.uvt.info.designpatternslab2023.services.GetBooks;
-import ro.uvt.info.designpatternslab2023.services.PostBooks;
+import ro.uvt.info.designpatternslab2023.services.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 //@RequestMapping("/books")
 public class BooksController {
-    private BookService bookService;
-   public BooksController(){}
-    public BooksController(BookService bookService) {
-        this.bookService = bookService;
-    }
+    private List<Book> books = new ArrayList<>();
+    private final GetBooks getBooks;
+    private final GetBookById getBookById;
+    private final UpdateBook updateBook;
+    private final DeleteBooks deleteBooks;
+    private final AddBooks addBooks;
+   public BooksController(GetBooks getBooks, GetBookById getBookById, UpdateBook updateBook, DeleteBooks deleteBooks, AddBooks addBooks){
+       this.getBooks = getBooks;
+       this.getBookById = getBookById;
+       this.updateBook = updateBook;
+       this.deleteBooks = deleteBooks;
+       this.addBooks = addBooks;
+   }
 
     @GetMapping("/statistics")
     public ResponseEntity<?> printStatistics() {
@@ -43,32 +50,38 @@ public class BooksController {
     public List<Book> getBooks()
     {
 
-        return new GetBooks().execute();
+        return getBooks.execute();
     }
 
     @GetMapping("/books/{id}")
-    public Book getBookById(@PathVariable int id) {
-        System.out.println("Get id: " + id);
-        return new Book("Cuore singur pe lume");
+    public Book getBookById(@PathVariable Long id) {
+//        System.out.println("Get id: " + id);
+//        return new Book("Cuore singur pe lume");
+        this.getBookById.setId(id);
+        return getBookById.execute();
     }
 
     @PostMapping("/books")
     public Book createBook(@RequestBody Book book)
     {
-
-        return new PostBooks(book, this.bookService).execute();
+        addBooks.setAtribute(book);
+        return addBooks.execute();
     }
 
     @PutMapping("/books/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable int id) {
-        System.out.println("Update id: " + id);
-        return new Book(book.title);
+    public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
+//        System.out.println("Update id: " + id);
+//        return new Book(book.title);
+        this.updateBook.setAtribute(id,book);
+        return this.updateBook.execute();
     }
 
     @DeleteMapping("/books/{id}")
-    public HttpStatus deleteBook(@PathVariable int id) {
-        System.out.println("Delete id: " + id);
-        return HttpStatus.OK;
+    public void deleteBook(@PathVariable Long id) {
+//        System.out.println("Delete id: " + id);
+//        return HttpStatus.OK;
+        this.deleteBooks.setAtribute(id);
+        this.deleteBooks.execute();
 
     }
 
