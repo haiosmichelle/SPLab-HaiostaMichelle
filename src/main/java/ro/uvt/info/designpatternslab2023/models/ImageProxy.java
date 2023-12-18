@@ -1,15 +1,27 @@
 package ro.uvt.info.designpatternslab2023.models;
 
-import java.awt.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
-public class ImageProxy implements Picture,Element, Visitee{
+import java.awt.*;
+@Entity
+public class ImageProxy extends BaseElement implements Picture, Visitee{
+    @Id
+    int id;
     public String url;
     public Dimension dim;
+    @Transient
     Image realImage = null;
     public ImageProxy(String url)
     {
         this.url=url;
     }
+
+    public ImageProxy() {
+
+    }
+
     private Image loadImage() {
 
         if (realImage == null) {
