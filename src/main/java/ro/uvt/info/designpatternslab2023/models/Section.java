@@ -1,15 +1,19 @@
 package ro.uvt.info.designpatternslab2023.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
 import java.util.ArrayList;
 import java.util.List;
-
-public class Section implements Element, Visitee {
+@Entity
+public class Section extends BaseElement implements Visitee {
+    @Id
+    int id;
     public String title;
-
+    @OneToMany(targetEntity = BaseElement.class)
     public List<Element> el = new ArrayList<>();
-
-    public List<Visitee> vis = new ArrayList<>();
-
+     public Section(){}
     public Section(String title) {
         this.title = title;
     }
@@ -25,7 +29,6 @@ public class Section implements Element, Visitee {
     @Override
     public void add(Element a) {
         el.add(a);
-        vis.add((Visitee) a);
     }
 
     @Override

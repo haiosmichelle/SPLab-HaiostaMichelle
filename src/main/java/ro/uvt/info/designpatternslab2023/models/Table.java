@@ -1,6 +1,12 @@
 package ro.uvt.info.designpatternslab2023.models;
 
-public class Table implements Element, Visitee {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Table extends BaseElement implements Visitee {
+    @Id
+    int id;
     public String title;
 
     public Table(String title) {
