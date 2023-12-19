@@ -13,7 +13,6 @@ public class Book extends Section implements Visitee {
     public String title;
     @ManyToMany
     public List<Author> au = new ArrayList<Author>();
-
     @JsonCreator
 
     public Book(String title) {
@@ -45,7 +44,6 @@ public class Book extends Section implements Visitee {
 
     public void addContent(Element a) {
         el.add(a);
-
     }
 
     @Override

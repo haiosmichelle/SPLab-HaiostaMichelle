@@ -2,6 +2,7 @@ package ro.uvt.info.designpatternslab2023.models;
 
 import jakarta.persistence.*;
 
+
 import java.awt.*;
 @Entity
 public class ImageProxy extends BaseElement implements Picture, Visitee{
