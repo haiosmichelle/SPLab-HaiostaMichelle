@@ -1,14 +1,14 @@
 package ro.uvt.info.designpatternslab2023.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+
 
 import java.awt.*;
 @Entity
 public class ImageProxy extends BaseElement implements Picture, Visitee{
     @Id
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     public String url;
     public Dimension dim;
     @Transient

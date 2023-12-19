@@ -1,5 +1,4 @@
 package ro.uvt.info.designpatternslab2023.models;
-
 import jakarta.persistence.*;
 
 @Entity

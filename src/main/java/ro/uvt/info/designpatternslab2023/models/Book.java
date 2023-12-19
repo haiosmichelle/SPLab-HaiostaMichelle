@@ -2,14 +2,14 @@ package ro.uvt.info.designpatternslab2023.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Book extends Section implements Visitee {
     @Id
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     public String title;
     @ManyToMany
     public List<Author> au = new ArrayList<Author>();
@@ -21,9 +21,8 @@ public class Book extends Section implements Visitee {
     }
 
     public Book() {
-        super();
-    }
 
+    }
 
     public void print() {
         System.out.println("Book: " + title);

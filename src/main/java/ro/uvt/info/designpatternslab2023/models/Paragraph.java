@@ -4,12 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import ro.uvt.info.designpatternslab2023.services.AlignStrategy;
-@Entity
 public class Paragraph extends BaseElement implements  Visitee {
-    @Id
     int id;
     public String text;
-    @Transient
+
     public AlignStrategy textAlignment;
 
     public Paragraph(String text) {

@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Long id;
     public String name;
 
     public Author(String name) {
@@ -22,11 +22,9 @@ public class Author {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void print() {
         System.out.println("Author: " + name);
     }

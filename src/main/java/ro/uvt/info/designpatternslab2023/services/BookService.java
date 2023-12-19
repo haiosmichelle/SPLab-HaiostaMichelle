@@ -2,27 +2,32 @@ package ro.uvt.info.designpatternslab2023.services;
 
 import org.springframework.stereotype.Service;
 import ro.uvt.info.designpatternslab2023.models.Book;
+import ro.uvt.info.designpatternslab2023.repository.BookRepository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class BookService {
     private Map<Long, Book> books = new HashMap<>();
+    BookRepository bookRepository;
+
     private long Id = 1;
     public Book save(Book book)
     { long bookId = getNextId();
         books.put(bookId,book);
         return books.get(bookId);
     }
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+
     private synchronized long getNextId() {
         return Id++;
     }
     public void delete(Long bookId)
     {
-     books.remove(bookId);
+     bookRepository.deleteById(bookId);
     }
     public List<Book> getAllBooks() {
         return new ArrayList<>(books.values());
@@ -32,6 +37,7 @@ public class BookService {
             books.put(bookId, updatedBook);
         }}
     public Book getBookById(Long bookId) {
-        return books.get(bookId);
+        Optional<Book> book = bookRepository.findById(bookId);
+        return book.orElse(null);
     }
 }
