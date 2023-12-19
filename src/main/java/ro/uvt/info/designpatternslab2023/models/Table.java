@@ -1,6 +1,15 @@
 package ro.uvt.info.designpatternslab2023.models;
 
-public class Table implements Element, Visitee {
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity(name="BookTable")
+public class Table extends BaseElement implements  Visitee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     public String title;
 
     public Table(String title) {

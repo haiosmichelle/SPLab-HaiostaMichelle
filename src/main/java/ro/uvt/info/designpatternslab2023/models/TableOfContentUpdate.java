@@ -11,7 +11,7 @@ public class TableOfContentUpdate implements Visitor{
     @Override
     public void visitSection(Section section) {
         tableOfContents.addEntry(section.title, currentPage+1);
-            for (Visitee element : section.vis) {
+            for (Element element : section.el) {
             element.accept(this);
         }
     }

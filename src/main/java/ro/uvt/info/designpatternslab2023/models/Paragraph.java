@@ -1,13 +1,21 @@
 package ro.uvt.info.designpatternslab2023.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import ro.uvt.info.designpatternslab2023.services.AlignStrategy;
-
-public class Paragraph implements Element, Visitee {
+public class Paragraph extends BaseElement implements  Visitee {
+    int id;
     public String text;
+
     public AlignStrategy textAlignment;
 
     public Paragraph(String text) {
         this.text = text;
+    }
+
+    public Paragraph() {
+
     }
 
     public String getText() {

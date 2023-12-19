@@ -1,20 +1,28 @@
 package ro.uvt.info.designpatternslab2023.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Book extends Section implements Visitee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     public String title;
+    @ManyToMany
     public List<Author> au = new ArrayList<Author>();
-    public List<Visitee> content = new ArrayList<>();
-    public TableOfContents tb;
+
     @JsonCreator
 
     public Book(String title) {
         super(title);
         this.title = title;
+    }
+
+    public Book() {
+
     }
 
     public void print() {
@@ -37,13 +45,13 @@ public class Book extends Section implements Visitee {
 
     public void addContent(Element a) {
         el.add(a);
-        content.add((Visitee) a);
+
     }
 
     @Override
     public void accept(Visitor visitor) {
         visitor.visitBook(this);
-        for(Visitee element : content)
+        for(Element element : el)
         {
             element.accept(visitor);
         }

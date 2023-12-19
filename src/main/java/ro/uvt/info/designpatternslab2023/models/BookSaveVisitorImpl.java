@@ -35,7 +35,7 @@ public class BookSaveVisitorImpl implements BookSaveVisitor{
         sectionNode.put("title", section.title);
 
         ArrayNode elementsNode = new ObjectMapper().createArrayNode();
-        for (Visitee element : section.vis) {
+        for (Element element : section.el) {
             if (element instanceof Paragraph || element instanceof ImageProxy ||
                     element instanceof Image || element instanceof Table) {
                 element.accept(this);

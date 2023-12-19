@@ -1,14 +1,17 @@
 package ro.uvt.info.designpatternslab2023.models;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
-public class Section implements Element, Visitee {
+@Entity
+public class Section extends BaseElement implements  Visitee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     public String title;
-
+    @OneToMany(targetEntity = BaseElement.class)
     public List<Element> el = new ArrayList<>();
-
-    public List<Visitee> vis = new ArrayList<>();
 
     public Section(String title) {
         this.title = title;
@@ -21,11 +24,10 @@ public class Section implements Element, Visitee {
             e.print();
         }
     }
-
+    public Section(){}
     @Override
     public void add(Element a) {
         el.add(a);
-        vis.add((Visitee) a);
     }
 
     @Override
