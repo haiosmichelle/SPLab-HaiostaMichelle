@@ -9,42 +9,15 @@ import java.util.List;
 public class Book extends Section implements Visitee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
-
-    public List<Author> getAu() {
-        return au;
-    }
-
-    private String title;
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setAu(List<Author> au) {
-        this.au = au;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public Long getId() {
-        return id;
-    }
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "book_author",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "author_id")
-    )
-    public List<Author> au = new ArrayList<>();
-
+    Long id;
+    public String title;
+    @ManyToMany
+    public List<Author> au = new ArrayList<Author>();
 
     @JsonCreator
 
     public Book(String title) {
-        //super(title);
+        super(title);
         this.title = title;
     }
 

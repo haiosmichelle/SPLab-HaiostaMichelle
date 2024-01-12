@@ -1,10 +1,13 @@
 package ro.uvt.info.designpatternslab2023.models;
 
+
 import jakarta.persistence.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
 @Entity
+
 public class Section extends BaseElement implements  Visitee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

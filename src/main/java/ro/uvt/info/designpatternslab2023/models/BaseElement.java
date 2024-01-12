@@ -6,5 +6,5 @@ import jakarta.persistence.*;
 public abstract class BaseElement implements Element {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    int id;
 }
