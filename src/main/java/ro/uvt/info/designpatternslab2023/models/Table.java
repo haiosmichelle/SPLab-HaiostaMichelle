@@ -9,8 +9,16 @@ import jakarta.persistence.Id;
 public class Table extends BaseElement implements  Visitee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    public String title;
+    private Long id;
+    private String title;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 
     public Table(String title) {
         this.title = title;

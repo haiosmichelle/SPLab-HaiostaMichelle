@@ -7,9 +7,34 @@ import java.awt.*;
 public class ImageProxy extends BaseElement implements Picture, Visitee{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    public String url;
-    public Dimension dim;
+    private Long id;
+    private String url;
+    private Dimension dim;
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setDim(Dimension dim) {
+        this.dim = dim;
+    }
+
+    public void setRealImage(Image realImage) {
+        this.realImage = realImage;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public Dimension getDim() {
+        return dim;
+    }
+
+    public Image getRealImage() {
+        return realImage;
+    }
+
     @Transient
     Image realImage = null;
     public ImageProxy(String url)

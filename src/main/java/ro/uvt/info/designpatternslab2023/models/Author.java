@@ -9,14 +9,21 @@ import jakarta.persistence.Id;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    public String name;
+    private Long id;
+    private String name;
 
     public Author(String name) {
         this.name = name;
     }
 
     public Author() {
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                '}';
     }
 
     public String getName() {

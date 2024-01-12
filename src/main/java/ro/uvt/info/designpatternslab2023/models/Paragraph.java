@@ -5,10 +5,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import ro.uvt.info.designpatternslab2023.services.AlignStrategy;
 public class Paragraph extends BaseElement implements  Visitee {
-    int id;
-    public String text;
+    private String text;
 
-    public AlignStrategy textAlignment;
+    private AlignStrategy textAlignment;
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTextAlignment(AlignStrategy textAlignment) {
+        this.textAlignment = textAlignment;
+    }
+
+    public AlignStrategy getTextAlignment() {
+        return textAlignment;
+    }
 
     public Paragraph(String text) {
         this.text = text;
