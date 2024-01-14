@@ -11,12 +11,20 @@ import ro.uvt.info.designpatternslab2023.services.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 //@RequestMapping("/books")
 public class BooksController {
+    List<Request<?>> requests;
+    CommandExecutor syncCommandExecutor;
+    CommandExecutor asyncCommandExecutor;
+    ExecutorService executorService;
     @Autowired
-    private BookRepository bookRepository;
+    BookService bookService;
     @Autowired
     private AllBooksSubject allBooksSubject;
     private List<Book> books = new ArrayList<>();
@@ -31,7 +39,27 @@ public class BooksController {
        this.updateBook = updateBook;
        this.deleteBooks = deleteBooks;
        this.addBooks = addBooks;
+       this.requests = new ArrayList<>();
+       this.asyncCommandExecutor = new AsynchronousExecutor();
+       this.executorService = Executors.newFixedThreadPool(2);
+       ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+       scheduler.scheduleAtFixedRate(this::processRequests, 0, 10, TimeUnit.SECONDS);
    }
+    public void processRequests() {
+        System.out.println("Processing requests");
+
+        for (Request request : requests) {
+            if (!request.isCompleted()) {
+                executorService.submit(() -> {
+                    System.out.println("Executing request " + request.getId());
+
+                    request.setResult(request.getCommand().execute());
+                    request.setCompleted(true);
+
+                    System.out.println("Request " + request.getId() + " completed");
+                });
+            }
+        }}
 
     @GetMapping("/statistics")
     public ResponseEntity<?> printStatistics() {
@@ -72,7 +100,10 @@ public class BooksController {
     public Book createBook(@RequestBody Book book) throws IOException {
         addBooks.setAtribute(book);
         addBooks.execute();
-        allBooksSubject.add(book);  // This will notify all observers about the new book
+        allBooksSubject.add(book);
+        Request request = asyncCommandExecutor.executeCommand(addBooks, bookService);
+        request.setId(requests.size());
+        requests.add(request);
          return book;
     }
 //@PostMapping("/books")
