@@ -2,6 +2,7 @@ package ro.uvt.info.designpatternslab2023.services;
 
 import org.springframework.stereotype.Component;
 import ro.uvt.info.designpatternslab2023.models.Book;
+
 @Component
 public class AddBooks implements Command<Book> {
     private final BookService contextbooks;
@@ -14,10 +15,11 @@ public class AddBooks implements Command<Book> {
 
     @Override
     public Book execute() {
-        return contextbooks.save(book);
+        return contextbooks.saveBook(book);
     }
 
     public void setAtribute(Book newBook){
         this.book = newBook;
     }
+
 }

@@ -5,10 +5,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Transient;
 import ro.uvt.info.designpatternslab2023.services.AlignStrategy;
 public class Paragraph extends BaseElement implements  Visitee {
-    int id;
-    public String text;
+    private String text;
 
-    public AlignStrategy textAlignment;
+    private AlignStrategy textAlignment;
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setTextAlignment(AlignStrategy textAlignment) {
+        this.textAlignment = textAlignment;
+    }
+
+    public AlignStrategy getTextAlignment() {
+        return textAlignment;
+    }
 
     public Paragraph(String text) {
         this.text = text;
@@ -26,7 +37,13 @@ public class Paragraph extends BaseElement implements  Visitee {
     public void print() {
         System.out.println("Paragraph: " + text);
     }
-   public void setAlignStrategy(AlignStrategy a)
+
+    @Override
+    public void setType(String type) {
+
+    }
+
+    public void setAlignStrategy(AlignStrategy a)
    {
     Context context=new Context(1,58);
     a.render(text,context);
@@ -38,6 +55,11 @@ public class Paragraph extends BaseElement implements  Visitee {
 
     @Override
     public Element get(int nr) {
+        return null;
+    }
+
+    @Override
+    public String getType() {
         return null;
     }
 

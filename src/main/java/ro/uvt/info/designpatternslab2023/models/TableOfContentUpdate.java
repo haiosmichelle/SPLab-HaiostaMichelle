@@ -10,7 +10,7 @@ public class TableOfContentUpdate implements Visitor{
 
     @Override
     public void visitSection(Section section) {
-        tableOfContents.addEntry(section.title, currentPage+1);
+        tableOfContents.addEntry(section.getTitle(), currentPage+1);
             for (Element element : section.el) {
             element.accept(this);
         }

@@ -4,7 +4,7 @@ import ro.uvt.info.designpatternslab2023.models.Book;
 @Component
 public class GetBookById implements Command<Book>{
     private final BookService contextBooks;
-    Long id;
+    private Long id;
 
     public GetBookById(BookService contextBooks) {
         this.contextBooks = contextBooks;

@@ -1,17 +1,24 @@
 package ro.uvt.info.designpatternslab2023.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.uvt.info.designpatternslab2023.models.*;
+import ro.uvt.info.designpatternslab2023.repository.BookRepository;
 import ro.uvt.info.designpatternslab2023.services.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 //@RequestMapping("/books")
 public class BooksController {
+    @Autowired
+    private BookRepository bookRepository;
+    @Autowired
+    private AllBooksSubject allBooksSubject;
     private List<Book> books = new ArrayList<>();
     private final GetBooks getBooks;
     private final GetBookById getBookById;
@@ -62,12 +69,29 @@ public class BooksController {
     }
 
     @PostMapping("/books")
-    public Book createBook(@RequestBody Book book)
-    {
+    public Book createBook(@RequestBody Book book) throws IOException {
         addBooks.setAtribute(book);
-        return addBooks.execute();
+        addBooks.execute();
+        allBooksSubject.add(book);  // This will notify all observers about the new book
+         return book;
     }
+//@PostMapping("/books")
+//public Book createBook(@RequestBody NewBookRequest newBookRequest) {
+//    Book book = new Book();
+//    addBooks.setAttributes(book, newBookRequest);
+//    System.out.println(book.title);
+//    book = bookRepository.save(book);
+//    allBooksSubject.add(book);
+//    return book;
+//}
 
+//   @PostMapping
+//    public String newBook(@RequestBody NewBookRequest newBookRequest) {
+//        Book book = createBook(newBookRequest);
+//        book = bookRepository.save(book);
+//        allBooksSubject.add(book);
+//        return "Book saved [" + book.getId() + "] " + book.title;
+//    }
     @PutMapping("/books/{id}")
     public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
 //        System.out.println("Update id: " + id);

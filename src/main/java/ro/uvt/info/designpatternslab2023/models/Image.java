@@ -4,7 +4,16 @@ import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
 public class Image implements Element,Picture, Visitee {
-    public String ImageName;
+   private String ImageName;
+
+    public void setImageName(String imageName) {
+        ImageName = imageName;
+    }
+
+    public String getImageName() {
+        return ImageName;
+    }
+
     public Image(String name) {
         ImageName = name;
         try {
@@ -18,12 +27,22 @@ public class Image implements Element,Picture, Visitee {
     }
 
     @Override
+    public void setType(String type) {
+
+    }
+
+    @Override
     public void add(Element a) {
 
     }
 
     @Override
     public Element get(int nr) {
+        return null;
+    }
+
+    @Override
+    public String getType() {
         return null;
     }
 

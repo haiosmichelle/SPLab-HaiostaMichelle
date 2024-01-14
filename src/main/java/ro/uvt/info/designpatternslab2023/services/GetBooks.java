@@ -8,7 +8,7 @@ import java.util.List;
 public class GetBooks implements Command<List<Book>>{
   private final BookService bookService;
 
-    public GetBooks(BookService bookService, BookService bookService1) {
+    public GetBooks( BookService bookService1) {
       this.bookService = bookService1;
     }
 

@@ -11,8 +11,25 @@ import java.util.List;
 public class Section extends BaseElement implements  Visitee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    public String title;
+    private Long id;
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public List<Element> getEl() {
+        return el;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setEl(List<Element> el) {
+        this.el = el;
+    }
+
     @OneToMany(targetEntity = BaseElement.class)
     public List<Element> el = new ArrayList<>();
 
@@ -27,6 +44,12 @@ public class Section extends BaseElement implements  Visitee {
             e.print();
         }
     }
+
+    @Override
+    public void setType(String type) {
+
+    }
+
     public Section(){}
     @Override
     public void add(Element a) {
@@ -36,6 +59,11 @@ public class Section extends BaseElement implements  Visitee {
     @Override
     public Element get(int nr) {
         return null;
+    }
+
+    @Override
+    public String getType() {
+        return "section";
     }
 
     @Override

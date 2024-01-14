@@ -25,14 +25,14 @@ public class BookSaveVisitorImpl implements BookSaveVisitor{
     }
     @Override
     public void visitBook(Book book) {
-        saveElementToJson(book.getClass().getSimpleName(), book.title);
+        saveElementToJson(book.getClass().getSimpleName(), book.getTitle());
     }
 
     @Override
     public void visitSection(Section section) {
         ObjectNode sectionNode = new ObjectMapper().createObjectNode();
         sectionNode.put("type", section.getClass().getSimpleName());
-        sectionNode.put("title", section.title);
+        sectionNode.put("title", section.getTitle());
 
         ArrayNode elementsNode = new ObjectMapper().createArrayNode();
         for (Element element : section.el) {
@@ -56,16 +56,16 @@ public class BookSaveVisitorImpl implements BookSaveVisitor{
 
     @Override
     public void visitImageProxy(ImageProxy imageProxy) {
-        saveElementToJson(imageProxy.getClass().getSimpleName(), imageProxy.url);
+        saveElementToJson(imageProxy.getClass().getSimpleName(), imageProxy.getUrl());
     }
 
     @Override
     public void visitImage(Image image) {
-        saveElementToJson(image.getClass().getSimpleName(), image.ImageName);
+        saveElementToJson(image.getClass().getSimpleName(), image.getImageName());
     }
 
     @Override
     public void visitTable(Table table) {
-        saveElementToJson(table.getClass().getSimpleName(), table.title);
+        saveElementToJson(table.getClass().getSimpleName(), table.getTitle());
     }
 }
