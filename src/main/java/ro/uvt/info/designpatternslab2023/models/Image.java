@@ -27,12 +27,22 @@ public class Image implements Element,Picture, Visitee {
     }
 
     @Override
+    public void setType(String type) {
+
+    }
+
+    @Override
     public void add(Element a) {
 
     }
 
     @Override
     public Element get(int nr) {
+        return null;
+    }
+
+    @Override
+    public String getType() {
         return null;
     }
 

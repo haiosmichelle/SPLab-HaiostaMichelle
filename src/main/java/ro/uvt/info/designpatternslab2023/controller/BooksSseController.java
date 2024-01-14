@@ -17,7 +17,7 @@ public class BooksSseController {
     @RequestMapping("/books-sse")
     public ResponseBodyEmitter getBooksSse() {
         final SseEmitter emitter = new SseEmitter(0L);
-        allBooksSubject.attach(new SseObserver(emitter));
+         allBooksSubject.attach(new SseObserver(emitter));
         return emitter;
     }
 

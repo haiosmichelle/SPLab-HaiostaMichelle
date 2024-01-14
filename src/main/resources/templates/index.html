@@ -9,7 +9,7 @@
             const source = new EventSource(`http://localhost:8080/books-sse`);
             source.onmessage = function(event) {
                 const data = JSON.parse(event.data);
-                document.getElementById("sseDiv").innerHTML += "id: "+ data.id +" title: "+data.title
+                 document.getElementById("sseDiv").innerHTML += "id: "+ data.id +" title: "+data.title
 
                     "<br>";
             };

@@ -44,6 +44,12 @@ public class Section extends BaseElement implements  Visitee {
             e.print();
         }
     }
+
+    @Override
+    public void setType(String type) {
+
+    }
+
     public Section(){}
     @Override
     public void add(Element a) {
@@ -53,6 +59,11 @@ public class Section extends BaseElement implements  Visitee {
     @Override
     public Element get(int nr) {
         return null;
+    }
+
+    @Override
+    public String getType() {
+        return "section";
     }
 
     @Override

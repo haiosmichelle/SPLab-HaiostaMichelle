@@ -11,7 +11,7 @@ public class HelloController {
 
     @Autowired
     public HelloController(ClientComponent clientComponent) {
-        this.clientComponent = clientComponent;
+        this.clientComponent =  clientComponent;
     }
 
     @GetMapping("/")

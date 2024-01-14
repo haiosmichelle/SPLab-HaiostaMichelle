@@ -2,10 +2,10 @@ package ro.uvt.info.designpatternslab2023.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.uvt.info.designpatternslab2023.models.Author;
-import ro.uvt.info.designpatternslab2023.models.Book;
+import ro.uvt.info.designpatternslab2023.models.*;
 import ro.uvt.info.designpatternslab2023.repository.AuthorRepository;
 import ro.uvt.info.designpatternslab2023.repository.BookRepository;
+import ro.uvt.info.designpatternslab2023.repository.TableRepository;
 
 import java.util.*;
 
@@ -15,20 +15,22 @@ public class BookService {
     BookRepository bookRepository;
     @Autowired
     AuthorRepository authorRepository;
+    @Autowired
+    TableRepository tableRepository;
     private Long Id=1L;
-    public Book saveBook(Book book){
-//    { Long bookId = getNextId();
-//        books.put(bookId,book);
-        for (Author a : book.au)
-        {authorRepository.save(a);}
-        System.out.println(book.getTitle());
-       bookRepository.save(book);
-        return book;
-    }
 
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
+    public Book saveBook(Book book){
+        for (Author a : book.au)
+        {authorRepository.save(a);}
+        for(Element e: book.el)
+        {tableRepository.save((Table)e);}
+       book=bookRepository.save(book);
+        return book;
+    }
+
 
     private synchronized Long getNextId() {
         return Id++;

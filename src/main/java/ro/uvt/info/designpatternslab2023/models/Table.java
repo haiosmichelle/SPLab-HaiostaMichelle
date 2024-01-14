@@ -1,5 +1,6 @@
 package ro.uvt.info.designpatternslab2023.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +13,6 @@ public class Table extends BaseElement implements  Visitee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -20,7 +20,7 @@ public class Table extends BaseElement implements  Visitee {
     public String getTitle() {
         return title;
     }
-
+    @JsonCreator
     public Table(String title) {
         this.title = title;
     }
@@ -34,6 +34,11 @@ public class Table extends BaseElement implements  Visitee {
     }
 
     @Override
+    public void setType(String type) {
+
+    }
+
+    @Override
     public void add(Element a) {
 
     }
@@ -41,6 +46,11 @@ public class Table extends BaseElement implements  Visitee {
     @Override
     public Element get(int nr) {
         return null;
+    }
+
+    @Override
+    public String getType() {
+        return "table";
     }
 
     @Override

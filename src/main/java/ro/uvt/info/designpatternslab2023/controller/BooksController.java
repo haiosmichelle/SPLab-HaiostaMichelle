@@ -73,7 +73,7 @@ public class BooksController {
         addBooks.setAtribute(book);
         addBooks.execute();
         allBooksSubject.add(book);  // This will notify all observers about the new book
-        return book;
+         return book;
     }
 //@PostMapping("/books")
 //public Book createBook(@RequestBody NewBookRequest newBookRequest) {

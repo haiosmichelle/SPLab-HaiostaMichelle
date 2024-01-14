@@ -37,7 +37,13 @@ public class Paragraph extends BaseElement implements  Visitee {
     public void print() {
         System.out.println("Paragraph: " + text);
     }
-   public void setAlignStrategy(AlignStrategy a)
+
+    @Override
+    public void setType(String type) {
+
+    }
+
+    public void setAlignStrategy(AlignStrategy a)
    {
     Context context=new Context(1,58);
     a.render(text,context);
@@ -49,6 +55,11 @@ public class Paragraph extends BaseElement implements  Visitee {
 
     @Override
     public Element get(int nr) {
+        return null;
+    }
+
+    @Override
+    public String getType() {
         return null;
     }
 

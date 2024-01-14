@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class AllBooksSubject {
-    private List<Observer> observers = new ArrayList<>();
+    private List<Observer> observers = new  ArrayList<>();
 
 
     public void attach(Observer observer) {
